@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <title>Factorial</title>
+    <link rel="stylesheet" href="Settings.css">
+</head>
+<body>
+    <div class="Header">
+        <div>
+            <a href="Factorial.html"> <button style="background-color: greenyellow;">Factorial</button></a>
+            <a href="Sum.html"><button>Sum</button></a>
+            <a href="Average.html"><button>Average</button></a>
+        </div>
+    </div>
+    
+    <div class="Sidebar">
+        <div>
+            <a href="Home.html"> <button class="Home">Home</button></a>
+            <a href="Conversion.html"> <button class="Conversion">Conversion</button></a>
+            <a href="TaxCalc.html"> <button class="TaxCalc">Income Tax Calculator</button></a>
+            <a href="Looping.html"> <button class="Looping" style="background-color: greenyellow;">Looping</button></a>
+            <a href="SimplePayroll.html"> <button class="Payroll">Simple Payroll</button></a>
+        </div>
+    </div>
+
+    <div class="Calculator">
+        <h1>Factorial Calculator</h1>
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button class="Calculate" onclick="calculateFactorial()">Factorial</button>
+        <button class="ClearButton" onclick="clearFields(0)">Clear</button>
+        <p id="resultFactorial"></p>
+    </div>
+
+    <script>
+        function calculateFactorial() {
+            const numberInput = document.getElementById('numberInput').value;
+            const number = parseInt(numberInput);
+
+            if (!isNaN(number) && number >= 0) {
+                let factorial = 1;
+                let i = 1;
+
+                while (i <= number) {
+                    factorial *= i;
+                    i++;
+                }
+
+                document.getElementById('resultFactorial').innerText = `Factorial of ${number} is: ${factorial}`;
+            } else {
+                document.getElementById('resultFactorial').innerText = 'Please enter a non-negative integer.';
+            }
+        }
+
+        function clearFields() {
+            // Clear the input field and result
+            document.getElementById("numberInput").value = "";
+            document.getElementById("resultFactorial").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

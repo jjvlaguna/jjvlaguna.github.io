@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="Settings.css">
+</head>
+<body>
+    <div class="Header">
+        <h1>Income Tax Calculator</h1>
+    </div>
+    
+    <div class="Sidebar">
+        <div>
+            <a href="Home.html"> <button class="Home">Home</button></a>
+            <a href="Conversion.html"> <button class="Conversion">Conversion</button></a>
+            <a href="TaxCalc.html"> <button class="TaxCalc"  style="background-color: greenyellow;">Income Tax Calculator</button></a>
+            <a href="Looping.html"> <button class="Looping">Looping</button></a>
+            <a href="SimplePayroll.html"> <button class="Payroll">Simple Payroll</button></a>
+        </div>
+    </div>
+
+    <div class="Calculator">
+        <label for="incomeInput">Enter annual income:</label>
+        <input type="number" id="incomeInput" placeholder="Enter income">
+        <button class="Calculate" onclick="calculateTax()">Calculate Tax</button>
+        <button class="ClearButton" onclick="clearFields(0)">Clear</button>
+        <p id="resultTax"></p>
+    </div>
+
+    <script>
+        function calculateTax() {
+            const incomeInput = document.getElementById('incomeInput').value;
+            const income = parseFloat(incomeInput);
+
+            if (!isNaN(income)) {
+                let tax = 0;
+
+                if (income <= 10000) {
+                    tax = 0.05 * income;
+                } else if (income > 10000 && income <= 50000) {
+                    tax = 0.1 * (income - 10000) + 0.05 * 10000;
+                } else {
+                    tax = 0.2 * (income - 50000) + 0.1 * (50000 - 10000) + 0.05 * 10000;
+                }
+
+                document.getElementById('resultTax').innerText = `Income Tax: $${tax.toFixed(2)}`;
+            } else {
+                document.getElementById('resultTax').innerText = 'Please enter a valid number for income.';
+            }
+        }
+
+        function clearFields() {
+            // Clear the input field and result
+            document.getElementById("incomeInput").value = "";
+            document.getElementById("resultTax").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

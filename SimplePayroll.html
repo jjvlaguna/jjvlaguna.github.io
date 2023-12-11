@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="Settings.css">
+</head>
+<body>
+    <div class="Header">
+        <h1>
+            Simple Payroll Calculator
+        </h1>
+    </div>
+    
+    <div class="Sidebar">
+        <div>
+            <a href="Home.html"> <button class="Home">Home</button></a>
+            <a href="Conversion.html"> <button class="Conversion">Conversion</button></a>
+            <a href="TaxCalc.html"> <button class="TaxCalc">Income Tax Calculator</button></a>
+            <a href="Looping.html"> <button class="Looping">Looping</button></a>
+            <a href="SimplePayroll.html"> <button class="Payroll"  style="background-color: greenyellow;">Simple Payroll</button></a>
+        </div>
+    </div>
+
+    <div class="Payroll">
+        <label for="hoursInput">Enter hours worked:</label>
+        <input type="number" id="hoursInput" placeholder="Enter hours">
+        
+        <label for="rateInput">Enter hourly rate:</label>
+        <input type="number" id="rateInput" placeholder="Enter rate">
+
+        <button class="Calculate" onclick="calculatePayroll()">Calculate</button>
+        <button class="ClearButton" onclick="clearFields(0)">Clear</button>
+
+        <h2>Payroll Summary</h2>
+        <p id="resultPayroll"></p>
+    </div>
+
+    <script>
+        function calculatePayroll() {
+            const hoursInput = document.getElementById('hoursInput').value;
+            const rateInput = document.getElementById('rateInput').value;
+
+            const hoursWorked = parseFloat(hoursInput);
+            const hourlyRate = parseFloat(rateInput);
+
+            if (!isNaN(hoursWorked) && !isNaN(hourlyRate) && hoursWorked >= 0 && hourlyRate >= 0) {
+                const grossPay = hoursWorked * hourlyRate;
+                const deductions = 0.1 * grossPay; // Assuming 10% deductions for simplicity
+                const netPay = grossPay - deductions;
+
+                const payrollSummary = `
+                    Gross Pay: $${grossPay.toFixed(2)}<br>
+                    Deductions: $${deductions.toFixed(2)}<br>
+                    Net Pay: $${netPay.toFixed(2)}
+                `;
+
+                document.getElementById('resultPayroll').innerHTML = payrollSummary;
+            } else {
+                document.getElementById('resultPayroll').innerText = 'Please enter valid values for hours worked and hourly rate.';
+            }
+        }
+
+        function clearFields() {
+            // Clear the input field and result
+            document.getElementById("hoursInput").value = "";
+            document.getElementById("rateInput").value = "";
+            document.getElementById("resultPayroll").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

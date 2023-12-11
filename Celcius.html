@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="Settings.css">
+
+    <script>
+        function celsiusToFahrenheit() {
+            // Get the input element
+            var inputCelsius = document.getElementById("celsiusInput");
+
+            // Get the value entered by the user
+            var celsius = parseFloat(inputCelsius.value);
+
+            // Check if the input is a valid number
+            if (isNaN(celsius)) {
+                alert("Please enter a valid number for temperature.");
+                return;
+            }
+
+            // Convert Celsius to Fahrenheit
+            var fahrenheit = (celsius * 9/5) + 32;
+
+            // Display the result in the result div
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = celsius + " degrees Celsius is equal to " + fahrenheit.toFixed(2) + " degrees Fahrenheit.";
+        }
+
+        function clearFields() {
+            // Clear the input field and result
+            document.getElementById("celsiusInput").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+
+</head>
+<body>
+    <div class="Header">
+        <div>
+            <a href="Celcius.html"> <button style="background-color: rgb(0, 191, 255);">Celcius to Fahrenheit</button></a>
+            <a href="Fahrenheit.html"><button>Fahrenheit to Celcius</button></a>
+            <a href="Meters.html"><button>Meters to Feet</button></a>
+            <a href="Feet.html"><button>Feet to Meters</button></a>
+        </div>
+    </div>
+
+    <div class="Sidebar">
+        <div>
+            <a href="Home.html"> <button class="Home">Home</button></a>
+            <a href="Conversion.html"> <button class="Conversion" style="background-color: greenyellow;">Conversion</button></a>
+            <a href="TaxCalc.html"> <button class="TaxCalc">Income Tax Calculator</button></a>
+            <a href="Looping.html"> <button class="Looping">Looping</button></a>
+            <a href="SimplePayroll.html"> <button class="Payroll">Simple Payroll</button></a>
+        </div>
+    </div>
+
+    <div>
+        <input type="number" id="celsiusInput" placeholder="Celsius">
+        <button class="Convert" onclick="celsiusToFahrenheit()">Convert</button>
+        <button class="ClearButton" onclick="clearFields(0)">Clear</button>
+    </div>
+
+    <div id="result"></div>
+
+    
+</body>
+</html>
